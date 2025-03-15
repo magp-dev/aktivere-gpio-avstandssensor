@@ -1,6 +1,7 @@
 let avstand = 0
+bitbot.select_model(BBModel.XL)
 let minimumavstand = 10
-loops.everyInterval(1000, function () {
+basic.forever(function () {
     avstand = bitbot.sonar(BBPingUnit.Centimeters)
     if (bitbot.sonar(BBPingUnit.Centimeters) <= minimumavstand) {
         pins.digitalWritePin(DigitalPin.P1, 1)
@@ -8,7 +9,5 @@ loops.everyInterval(1000, function () {
         bitbot.ledRotate(true, BBArms.Both)
         basic.pause(20000)
     }
-})
-basic.forever(function () {
-	
+    basic.pause(500)
 })
